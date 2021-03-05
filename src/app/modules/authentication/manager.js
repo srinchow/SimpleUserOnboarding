@@ -11,7 +11,7 @@ class BLManager {
             if (!req || !req.email || !req.password)
                 throw Utils.error({}, apiFailureMessage.INVALID_PARAMS, httpConstants.RESPONSE_CODES.BAD_REQUEST);
 
-            let User = await UserModel.getUserInfo(req.email);
+            let User = await UserModel.getUser(req.email);
 
             if (User) {
                 let result = await bcrypt.compare(req.password, User.password);

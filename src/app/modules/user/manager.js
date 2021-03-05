@@ -1,6 +1,5 @@
-const config = require('../../../config');
-
 const UserModel = require('../../models/UserModel/index');
+
 
 class BLManager {
 
@@ -17,7 +16,12 @@ class BLManager {
     async GetAnswers(user) {
 
         try {
-            return await UserModel.GetAnswers(user);
+            let { username } = user;
+
+            let UserObj = await UserModel.getUser(username)
+
+            return UserObj.Answers
+
         }
         catch (err) {
             console.log(err);

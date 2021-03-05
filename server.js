@@ -11,8 +11,6 @@ global.io = require('socket.io')(http);
 require('./src/config/express')(app);
 require('./src/routes')(app);
 
-const config = require('./src/config/index');
-console.log(config);
 
 Promise.all([]
 ).then(listen).catch((err) => {
