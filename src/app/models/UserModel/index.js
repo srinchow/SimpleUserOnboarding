@@ -1,31 +1,33 @@
 const AWS = require("aws-sdk");
-const config = require("../../../config");
+const config = require("../../../config/index");
 
-const updateAWSConfigForDynamo = (accessKeyId, endpoint, secretAccessKey, region) => {
-    AWS.config.update({
-        accessKeyId: accessKeyId,
-        endpoint: endpoint,
-        secretAccessKey: secretAccessKey,
-        region: region
-    })
-}
 
 
 const getUser = async (username) => {
 
-    updateAWSConfigForDynamo(config.AWS_ACCESS_KEY, config.AWS_DYNAMO_END_POINT, config.AWS_SECRET_KEY, config.AWS_AWS_REGION);
-    const params = {
-        TableName: 'Users',
-        KeyConditionExpression: 'username = :username',
-        ExpressionAttributeValues: {
-            ':username': username
+    try {
+
+        AWS.config.update({
+            region: 'local',
+            endpoint: 'http://localhost:8000'
+        })
+        const params = {
+            TableName: 'Users',
+            KeyConditionExpression: 'username = :username',
+            ExpressionAttributeValues: {
+                ':username': username
+            }
+
         }
+
+        const docClient = new AWS.DynamoDB.DocumentClient()
+        let result = await docClient.query(params).promise();
+
+        return result.Items;
     }
-
-    const docClient = new AWS.DynamoDB.DocumentClient();
-    let result = await docClient.query(params).promise();
-
-    return result.Items;
+    catch (err) {
+        console.log(err);
+    }
 }
 
 
@@ -40,6 +42,7 @@ const addAnswer = async (username, answers) => {
     }
 }
 
-exports = {
-    addAnswer, getUser
+module.exports = {
+    addAnswer,
+    getUser
 }

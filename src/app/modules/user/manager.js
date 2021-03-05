@@ -32,4 +32,4 @@ class BLManager {
 
 }
 
-module.export = BLManager;
+module.exports = BLManager;
