@@ -1,0 +1,11 @@
+{
+  "name": "backend_task",
+  "version": "1.0.0",
+  "description": "WysaAPI",
+  "main": "server.js",
+  "scripts": {
+    "test": "nodemon server.js"
+  },
+  "author": "Srinjoy",
+  "license": "ISC"
+}
