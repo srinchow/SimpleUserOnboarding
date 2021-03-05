@@ -8,5 +8,6 @@ module.exports = {
     AWS_DYNAMO_END_POINT: process.env.AWS_DYNAMO_END_POINT || "",
     AWS_REGION: process.env.AWS_REGION || "",
     KAFKA_HOST: process.env.KAFKA_HOST || "",
-    JWT_KEY: process.env.JWT_KEY || "defaultpass"
+    JWT_KEY: process.env.JWT_KEY || "defaultpass",
+    IS_CONSOLE_LOG: "true"
 }

@@ -1,8 +1,8 @@
 const process = require('process');
 const { endPoints } = require('../app/common/constant');
 const { authorizeUser } = require("../middleware/authentication");
-const { default: userController } = require('../app/modules/authentication/controller');
-const { default: authController } = require('../app/modules/authentication/controller');
+const { userController } = require('../app/modules/user/controller');
+const { authController } = require('../app/modules/authentication/controller');
 
 module.exports = function (app) {
 
@@ -11,7 +11,7 @@ module.exports = function (app) {
     });
 
     app.post(endPoints.login, authController.login);
-    app.post(endPoints.addAnswers, authorizeUser, userController.addAnswers);
+    app.post(endPoints.addAnswers, authorizeUser, userController.addAnswer);
 
     app.get(endPoints.getAnswers, authorizeUser, userController.getAnswers)
 

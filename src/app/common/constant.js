@@ -1,4 +1,4 @@
-export const httpConstants = {
+exports.httpConstants = {
 
     METHOD_TYPE: {
         POST: 'POST',
@@ -53,21 +53,21 @@ export const httpConstants = {
     }
 };
 
-export const stringConstants = {};
+exports.stringConstants = {};
 
-export const genericConstants = {
+exports.genericConstants = {
     DEVICE_TYPE: {},
 
 };
 
-export const apiSuccessMessage = {
+exports.apiSuccessMessage = {
     ADD_SUCCESS: "Activity added successfully",
     GET_SUCCESS: "Activity get successfully",
     UPDATE_SUCCESS: "Activity updated successfully",
     DELETE_SUCCESS: "Activity deleted successfully"
 };
 
-export const apiFailureMessage = {
+exports.apiFailureMessage = {
     INVALID_PARAMS: 'Invalid Parameters',
     INVALID_REQUEST: 'Invalid Request',
     INVALID_SESSION_TOKEN: "Invalid session token",
@@ -85,10 +85,11 @@ export const apiFailureMessage = {
 };
 
 
-export const endPoints = {
+exports.endPoints = {
     healthCheck: '/api/',
     login: '/api/login',
     addAnswers: '/api/addAnswer',
-    getAnswers: '/api/getAnswer'
+    getAnswers: '/api/getAnswer',
+    home: '/home'
 
 }

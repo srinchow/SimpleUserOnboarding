@@ -1,4 +1,4 @@
-import config from '../../../config';
+const config = require('../../../config');
 
 const UserModel = require('../../models/UserModel/index');
 
@@ -28,4 +28,4 @@ class BLManager {
 
 }
 
-export default BLManager;
+module.export = BLManager;

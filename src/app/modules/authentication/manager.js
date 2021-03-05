@@ -1,4 +1,4 @@
-import config from '../../../config';
+const config = require('../../../config/index');
 
 const UserModel = require('../../models/UserModel/index');
 const bcrypt = require('bcryptjs');
@@ -17,7 +17,7 @@ class BLManager {
                 let result = await bcrypt.compare(req.password, User.password);
 
                 if (result) {
-                    const accessToken = jwt.sign({ username: User.username, Id: User.Id }, config.config.JWT_KEY);
+                    const accessToken = jwt.sign({ username: User.username, Id: User.Id }, config.JWT_KEY);
                 }
             }
             else {
@@ -32,4 +32,4 @@ class BLManager {
 
 }
 
-export default BLManager;
+module.export = BLManager;

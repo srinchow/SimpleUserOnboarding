@@ -1,9 +1,9 @@
-import Utils from "../../utils"
+const { Utils } = require('../../utils/index');
 const BlManager = require('./manager');
 const { apiFailureMessage, apiSuccessMessage, failureMessage, httpConstants } = require('../../common/constant');
 
 
-export default class userController {
+exports.userController = class userController {
     //Add UserAnswer
     static async addAnswer(request, response) {
 

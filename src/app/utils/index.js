@@ -1,7 +1,8 @@
-const { httpConstants, failureMessage } = require('../common/constants');
+const { httpConstants, failureMessage } = require('../common/constant');
+const config = require('../../config/index');
 const decode = require("jwt-decode")
 
-export default class Utils {
+class Utils {
 
     static response(res, data, message, success, code) {
         let messageObj = {
@@ -39,7 +40,7 @@ export default class Utils {
     };
 
     static webLog(message, payload = {}, methodName, requestID = 0, developerName = 'Developer', type = 'info') {
-        if (Config.IS_CONSOLE_LOG === "true") {
+        if (config.IS_CONSOLE_LOG === 'true') {
             console.log(JSON.stringify({
                 message: message,
                 developerAlias: developerName,
@@ -72,3 +73,5 @@ export default class Utils {
 
     };
 }
+
+exports.Utils = Utils;

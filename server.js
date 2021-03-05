@@ -1,7 +1,6 @@
 const { httpConstants } = require('./src/app/common/constant');
 const app = require('express')();
-const Utils = require('./src/app/utils');
-
+const { Utils } = require('./src/app/utils');
 
 global.webLog = Utils.webLog;
 global.basedir = __dirname;
@@ -10,11 +9,14 @@ const PORT = process.env.PORT || 3004;
 const http = require('http').Server(app);
 global.io = require('socket.io')(http);
 require('./src/config/express')(app);
-require('./routes')(app);
+require('./src/routes')(app);
+
+const config = require('./src/config/index');
+console.log(config);
 
 Promise.all([]
 ).then(listen).catch((err) => {
-    webLog("Error", {}, "listen")
+    Utils.webLog("Error", {}, "listen")
 })
 
 function listen() {
