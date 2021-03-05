@@ -77,16 +77,18 @@ export const apiFailureMessage = {
     SESSION_GENERATION: "Unable to generate session!",
     SESSION_EXPIRED: "Session Expired!",
     USER_NOT_FOUND: "User not found!",
-    ADD_FAIL: "Unable to add activity",
-    GET_FAIL: "Unable to get activity",
-    UPDATE_FAIL: "Unable to update activity",
-    DELETE_FAIL: "Unable to delete activity",
-    USER_ALREADY_EXISTS: "User already exists",
+    ADD_FAIL: "Unable to add",
+    GET_FAIL: "Unable to get",
+    UPDATE_FAIL: "Unable to update",
+    DELETE_FAIL: "Unable to delete",
+    ALREADY_EXISTS: "already exists",
 };
 
 
 export const endPoints = {
-    GET_SUPPLIER_BY_CODE: "/get-supplier-by-code",
-    GET_USER_BY_PURCHASING_GROUP: "/get-buyer-by-purchasing-group",
-    GET_USERS_BY_ROLE: '/get-user-by-role'
+    healthCheck: '/api/',
+    login: '/api/login',
+    addAnswers: '/api/addAnswer',
+    getAnswers: '/api/getAnswer'
+
 }
