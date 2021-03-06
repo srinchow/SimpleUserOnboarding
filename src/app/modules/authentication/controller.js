@@ -13,7 +13,7 @@ exports.authController = class authController {
             return Utils.handleError({ code: 400, message: 'No username or passowrd' }, request, response, httpConstants.LOG_LEVEL_TYPE.ERROR);
         }
 
-        let [error, loginResponse] = await new BlManager().Login(request.body);
+        let [error, loginResponse] = await Utils.parseResponse(new BlManager().Login(request.body));
 
 
         if (error) {

@@ -9,5 +9,10 @@ module.exports = {
     AWS_REGION: process.env.AWS_REGION || "local",
     KAFKA_HOST: process.env.KAFKA_HOST || "",
     JWT_KEY: process.env.JWT_KEY || "defaultpass",
-    IS_CONSOLE_LOG: "true"
+    IS_CONSOLE_LOG: "true",
+    DB_HOST: process.env.DB_HOST || 'localhost',
+    DB_USER: process.env.DB_USER || 'root',
+    DB_NAME: process.env.DB_NAME || 'Wysa',
+    DB_PASS: process.env.DB_PASS || '12345678',
+
 }

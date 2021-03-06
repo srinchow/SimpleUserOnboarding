@@ -8,13 +8,15 @@ class BLManager {
     async Login(req) {
         try {
 
-            let User = await UserModel.getUser(req.email);
+            let User = await UserModel.getUser(req.username);
             if (User) {
+
                 let res = bcrypt.compare(req.password, User.password)
                 await res;
 
                 if (res) {
-                    const accessToken = jwt.sign({ username: req.username }, config.JWT_KEY);
+                    console.log(config.JWT_KEY);
+                    const accessToken = jwt.sign({ username: req.username, userId: User.userId }, 'shhh');
                     return accessToken;
                 }
             }

@@ -3,9 +3,18 @@ const UserModel = require('../../models/UserModel/index');
 
 class BLManager {
 
-    async AddAnswers(answers, user) {
+    async AddAnswers(answer, user) {
         try {
             return await UserModel.AddAnswers(user, answers);
+        }
+        catch (err) {
+            console.log(err);
+        }
+    }
+
+    async calUserScore(user) {
+        try {
+            return "34%";
         }
         catch (err) {
             console.log(err);
@@ -16,11 +25,10 @@ class BLManager {
     async GetAnswers(user) {
 
         try {
-            let { username } = user;
+            let { userId, username } = user;
 
-            let UserObj = await UserModel.getUser(username)
-
-            return UserObj.Answers
+            let answers = await UserModel.getAnswers(userId);
+            return answers;
 
         }
         catch (err) {

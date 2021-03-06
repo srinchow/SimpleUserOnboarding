@@ -1,48 +1,45 @@
-const AWS = require("aws-sdk");
-const config = require("../../../config/index");
+const db = require('../../../config/db');
+const { Utils } = require("../../utils/index");
 
-
-
-const getUser = async (username) => {
+exports.getUser = async (username) => {
 
     try {
+        let result = await db.query('SELECT * FROM Users WHERE username = ?', [username]);
 
-        AWS.config.update({
-            region: 'local',
-            endpoint: 'http://localhost:8000'
-        })
-        const params = {
-            TableName: 'Users',
-            KeyConditionExpression: 'username = :username',
-            ExpressionAttributeValues: {
-                ':username': username
-            }
-
+        if (result.length == 0) {
+            throw new Error('No such username in Table');
         }
-
-        const docClient = new AWS.DynamoDB.DocumentClient()
-        let result = await docClient.query(params).promise();
-
-        return result.Items;
+        else {
+            return result[0];
+        }
     }
     catch (err) {
         console.log(err);
     }
 }
 
+exports.addAnswer = async (userId, answer) => {
 
-const addAnswer = async (username, answers) => {
+    try {
+        let result = await db.query('INSERT INTO RESPONSE(userId,qId,answerType,answer) VALUES (?,?,?,?)', [userId, ...answer]);
 
-    updateAWSConfigForDynamo(config.AWS_ACCESS_KEY, config.AWS_DYNAMO_END_POINT, config.AWS_SECRET_KEY, config.AWS_AWS_REGION);
-    const params = {
-        TableName: 'Users',
-        UpdateExpression: 'set Answers = list_append(if_not_exists(Answers, :empty_list), :Answers)',
-        ExpressionAttributeValues: { ':Answers': [...answers], ':empty_list': [] }
+        return true;
+
+    }
+    catch (err) {
 
     }
 }
 
-module.exports = {
-    addAnswer,
-    getUser
+exports.getAnswers = async (userId) => {
+    try {
+        let result = await db.query('SELECT * FROM Response where userId = ?', [userId]);
+
+        if (result.length != 0) {
+            return result;
+        }
+    }
+    catch (err) {
+        console.log(err);
+    }
 }
