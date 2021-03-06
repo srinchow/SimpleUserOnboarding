@@ -90,6 +90,9 @@ exports.endPoints = {
     login: '/api/login',
     addAnswers: '/api/addAnswer',
     getAnswers: '/api/getAnswer',
-    home: '/home'
+    home: '/home',
+    Score: '/api/score',
+    isOnboarded: '/api/IsOnboarded',
+    signup: '/api/signup'
 
 }

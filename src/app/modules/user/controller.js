@@ -50,6 +50,15 @@ exports.userController = class userController {
             return Utils.handleError({}, req, res);
         }
 
+        let [error, score] = await Utils.parseResponse(new BlManager().calUserScore(request.user));
+
+        if (error) {
+            return Utils.response(response, error, apiFailureMessage.GET_FAIL, httpConstants.RESPONSE_STATUS.FAILURE, httpConstants.RESPONSE_CODES.NOT_FOUND);
+        }
+        else {
+            return Utils.response(response, score, apiSuccessMessage.GET_SUCCESS, httpConstants.RESPONSE_STATUS.SUCCESS, httpConstants.RESPONSE_CODES.OK);
+        }
+
 
     }
 

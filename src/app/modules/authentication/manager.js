@@ -29,6 +29,22 @@ class BLManager {
         }
     }
 
+    async SignUp(req) {
+
+        try {
+            let { username, password } = req;
+
+            let hashedpassword = bcrypt.hashSync(password, 10);
+
+            let addUserResponse = await UserModel.addUser(username, hashedpassword);
+
+            return addUserResponse;
+
+        }
+        catch (err) {
+            console.log(err);
+        }
+    }
 
 }
 

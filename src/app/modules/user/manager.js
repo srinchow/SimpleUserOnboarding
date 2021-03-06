@@ -5,7 +5,7 @@ class BLManager {
 
     async AddAnswers(answer, user) {
         try {
-            return await UserModel.addAnswer(user, answers);
+            return await UserModel.addAnswer(user, answer);
         }
         catch (err) {
             console.log(err);

@@ -18,6 +18,19 @@ exports.getUser = async (username) => {
     }
 }
 
+exports.addUser = async (username, hashedpassword) => {
+    try {
+        let result = await db.query('INSERT INTO Users(username,password) VALUES (?,?)', [username, hashedpassword]);
+
+        if (result) {
+            return true;
+        }
+    }
+    catch (err) {
+        console.log(err);
+    }
+}
+
 exports.addAnswer = async (userId, answer) => {
 
     try {
@@ -43,3 +56,4 @@ exports.getAnswers = async (userId) => {
         console.log(err);
     }
 }
+
