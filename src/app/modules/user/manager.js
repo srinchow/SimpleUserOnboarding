@@ -14,7 +14,7 @@ class BLManager {
 
     async calUserScore(user) {
         try {
-            return "34%";
+            return "34%"; // this score eventually calculated by the answer values;
         }
         catch (err) {
             console.log(err);

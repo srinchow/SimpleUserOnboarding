@@ -44,5 +44,14 @@ exports.userController = class userController {
         }
     }
 
+    static async calScore(request, response) {
+        if (!request || !request.user) {
+            Utils.webLog('Illegal Request Parameter', {}, "Get All Answers", 0, 'Srinjoy', apiFailureMessage.BAD_REQUEST);
+            return Utils.handleError({}, req, res);
+        }
+
+
+    }
+
 
 }
