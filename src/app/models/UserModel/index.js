@@ -23,11 +23,11 @@ exports.addAnswer = async (userId, answer) => {
     try {
         let result = await db.query('INSERT INTO RESPONSE(userId,qId,answerType,answer) VALUES (?,?,?,?)', [userId, ...answer]);
 
-        return true;
+        return result;
 
     }
     catch (err) {
-
+        console.log(err);
     }
 }
 
