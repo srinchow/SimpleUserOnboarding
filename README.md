@@ -44,6 +44,8 @@
 
 
 <br>
+
+
 ```
         path: /isOnboarded
         header : {Authorization:JWT_TOKEN}
