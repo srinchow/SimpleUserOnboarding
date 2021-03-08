@@ -16,7 +16,7 @@ class BLManager {
 
                 if (res) {
                     console.log(config.JWT_KEY);
-                    const accessToken = jwt.sign({ username: req.username, userId: User.userId }, 'shhh');
+                    const accessToken = jwt.sign({ username: req.username, userId: User.userId, role: User.role }, 'shhh');
                     return accessToken;
                 }
             }
@@ -26,6 +26,7 @@ class BLManager {
         }
         catch (err) {
             console.log(err);
+            throw new Error(err);
         }
     }
 
@@ -35,6 +36,7 @@ class BLManager {
             let { username, password } = req;
 
             let hashedpassword = bcrypt.hashSync(password, 10);
+            console.log(username, hashedpassword);
 
             let addUserResponse = await UserModel.addUser(username, hashedpassword);
 
@@ -43,6 +45,7 @@ class BLManager {
         }
         catch (err) {
             console.log(err);
+            throw new Error(err);
         }
     }
 

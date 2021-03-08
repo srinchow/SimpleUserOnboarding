@@ -57,3 +57,20 @@ exports.getAnswers = async (userId) => {
     }
 }
 
+
+exports.addQuestion = async (qid, text) => {
+
+    let result = await db.query('INSERT INTO Question(qid,text) VALUES (?,?)', [qid, text]);
+
+    return result
+
+
+}
+
+exports.getAllQuestions = async () => {
+    let result = await db.query('SELECT * FROM Question;');
+    return result;
+
+
+}
+

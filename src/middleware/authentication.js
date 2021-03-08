@@ -13,7 +13,7 @@ exports.authorizeUser = async (req, res, next) => {
         return Utils.handleError({ code: 401, message: 'Auth Header Missing' }, req, res);
     }
 
-    console.log(config.JWT_KEY);
+    //console.log(config.JWT_KEY);
 
     try {
         let decoded = jwt.verify(token, 'shhh');
@@ -26,3 +26,13 @@ exports.authorizeUser = async (req, res, next) => {
     }
 
 }
+
+
+
+exports.isAdmin = async (req, res, next) => {
+    if (req.user.role == 10) next();
+    else {
+        return Utils.response(res, {}, 'failed', httpConstants.RESPONSE_STATUS.FAILURE, httpConstants.RESPONSE_CODES.UNAUTHORIZED);
+    }
+}
+

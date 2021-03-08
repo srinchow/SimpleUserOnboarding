@@ -10,6 +10,7 @@ class BLManager {
         }
         catch (err) {
             console.log(err);
+            throw new Error(err);
         }
     }
 
@@ -19,6 +20,7 @@ class BLManager {
         }
         catch (err) {
             console.log(err);
+            throw new Error(err);
         }
     }
 
@@ -33,6 +35,7 @@ class BLManager {
         }
         catch (err) {
             console.log(err);
+            throw new Error(err);
         }
 
     }
