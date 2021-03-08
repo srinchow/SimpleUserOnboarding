@@ -21,14 +21,16 @@ module.exports = function (app) {
 
 
     /*
-    Answers Apis
+    User Apis
     */
     app.post(endPoints.addAnswers, authorizeUser, userController.addAnswer);
     app.get(endPoints.getAnswers, authorizeUser, userController.getAnswers);
+    app.get(endPoints.isOnboarded, authorizeUser, userController.isOnboarded);
+    app.get(endPoints.Score, authorizeUser, userController.calScore);
 
 
     /*
-    Questions Apis
+    Questions Apis(Admin)
     */
 
     app.post(endPoints.addQuestion, authorizeUser, isAdmin, questionController.addQuestion);

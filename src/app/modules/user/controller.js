@@ -64,5 +64,21 @@ exports.userController = class userController {
 
     }
 
+    static async isOnboarded(request, response) {
+        if (!request || !request.user) {
+            Utils.webLog('Illegal Request Parameter', {}, "Get All Answers", 0, 'Srinjoy', apiFailureMessage.BAD_REQUEST);
+            return Utils.handleError({}, req, res);
+        }
+
+        let [error, isOnboarded] = await Utils.parseResponse(new BLManager().isOnboarded(request.user));
+
+        if (error) {
+            return Utils.response(response, error, apiFailureMessage.GET_FAIL, httpConstants.RESPONSE_STATUS.FAILURE, httpConstants.RESPONSE_CODES.NOT_FOUND);
+        }
+        return Utils.response(response, isOnboarded, apiSuccessMessage.GET_SUCCESS, httpConstants.RESPONSE_STATUS.SUCCESS, httpConstants.RESPONSE_CODES.OK);
+
+
+    }
+
 
 }

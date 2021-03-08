@@ -40,6 +40,24 @@ class BLManager {
 
     }
 
+    async isOnboarded(user) {
+        try {
+            let { userId, username } = user;
+
+            console.log(userId);
+            let answers = await UserModel.getAnswers(userId);
+            let question = await UserModel.getAllQuestions();
+
+            answers = answers || [];
+            console.log(answers, question);
+
+            if (answers.length === question.length) return true;
+            else return false;
+        }
+        catch (err) {
+            throw new Error(err);
+        }
+    }
 
 }
 
