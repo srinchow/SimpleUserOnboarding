@@ -19,7 +19,6 @@ exports.authController = class authController {
             return Utils.response(response, error, apiFailureMessage.FAILED_TO_LOGIN, httpConstants.RESPONSE_STATUS.FAILURE, httpConstants.RESPONSE_CODES.FORBIDDEN)
         }
         else {
-            response.cookie('Authorization', loginResponse);
             return Utils.response(response, loginResponse, apiSuccessMessage.LOGIN_SUCCESS, httpConstants.RESPONSE_STATUS.SUCCESS, httpConstants.RESPONSE_CODES.OK)
         }
     }
