@@ -34,7 +34,7 @@ exports.addUser = async (username, hashedpassword) => {
 exports.addAnswer = async (userId, answer) => {
 
     try {
-        let result = await db.query('INSERT INTO RESPONSE(userId,qId,answerType,answer) VALUES (?,?,?,?)', [userId, ...answer]);
+        let result = await db.query('INSERT INTO Response(userId,qid,Type,response) VALUES (?,?,?,?)', [userId, ...answer]);
 
         return result;
 

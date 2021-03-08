@@ -13,7 +13,9 @@ exports.userController = class userController {
             return Utils.handleError({ code: httpConstants.RESPONSE_CODES.BAD_REQUEST }, request, response);
         }
 
-        let [error, Addresult] = await Utils.parseResponse(new BlManager().addAnswer(request.body.answer, req.User));
+        console.log(request.user, request.body.answers);
+
+        let [error, Addresult] = await Utils.parseResponse(new BlManager().AddAnswers(request.body.answers, request.user.userId));
 
         if (error) {
             return Utils.response(response, error, apiFailureMessage.ALREADY_EXISTS, httpConstants.RESPONSE_STATUS.FAILURE, httpConstants.RESPONSE_CODES.BAD_REQUEST)

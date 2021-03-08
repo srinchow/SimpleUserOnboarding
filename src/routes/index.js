@@ -13,7 +13,7 @@ module.exports = function (app) {
     app.post(endPoints.login, authController.login);
     app.post(endPoints.addAnswers, authorizeUser, userController.addAnswer);
 
-    app.get(endPoints.getAnswers, authorizeUser, userController.getAnswers)
+    app.get(endPoints.getAnswers, authorizeUser, userController.getAnswers);
 
     app.get(endPoints.home, authorizeUser, async (req, res) => {
         return res.send('Home Page');

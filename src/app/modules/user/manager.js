@@ -5,6 +5,7 @@ class BLManager {
 
     async AddAnswers(answer, user) {
         try {
+            console.log(answer, user);
             return await UserModel.addAnswer(user, answer);
         }
         catch (err) {
@@ -20,7 +21,6 @@ class BLManager {
             console.log(err);
         }
     }
-
 
     async GetAnswers(user) {
 

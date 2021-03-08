@@ -1,5 +1,5 @@
 CREATE TABLE Users(
-    `userId` int
+     `userId` int
 (11) NOT NULL AUTO_INCREMENT,
     `username` VARCHAR
 (100) NOT NULL,
@@ -10,6 +10,5 @@ CREATE TABLE Users(
      PRIMARY KEY
 (`userId`),
      UNIQUE KEY
-(`username`),
-
+(`username`)
 );
