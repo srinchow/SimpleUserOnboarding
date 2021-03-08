@@ -15,7 +15,7 @@ class BLManager {
                 await res;
 
                 if (res) {
-                    console.log(config.JWT_KEY);
+                    //console.log(config.JWT_KEY);
                     const accessToken = jwt.sign({ username: req.username, userId: User.userId, role: User.role }, 'shhh');
                     return accessToken;
                 }
