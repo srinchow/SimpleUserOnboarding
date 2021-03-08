@@ -86,15 +86,15 @@ exports.apiFailureMessage = {
 
 
 exports.endPoints = {
-    healthCheck: '/api/',
-    login: '/api/login',
-    addAnswers: '/api/addAnswer',
-    getAnswers: '/api/getAnswer',
+    healthCheck: '/',
+    login: '/login',
+    addAnswers: '/addAnswer',
+    getAnswers: '/getAnswer',
     home: '/home',
-    Score: '/api/score',
-    isOnboarded: '/api/IsOnboarded',
-    signup: '/api/signup',
-    addQuestion: '/api/addQuestion',
-    getAllQuestions: '/api/getQuestions'
+    Score: '/score',
+    isOnboarded: '/IsOnboarded',
+    signup: '/signup',
+    addQuestion: '/addQuestion',
+    getAllQuestions: '/getQuestions'
 
 }
