@@ -11,13 +11,15 @@ class BLManager {
             let User = await UserModel.getUser(req.username);
             if (User) {
 
-                let res = bcrypt.compare(req.password, User.password)
-                await res;
+                let res = await bcrypt.compare(req.password, User.password)
 
                 if (res) {
                     //console.log(config.JWT_KEY);
                     const accessToken = jwt.sign({ username: req.username, userId: User.userId, role: User.role }, 'shhh');
                     return accessToken;
+                }
+                else {
+                    throw new Error("incorrect Password");
                 }
             }
             else {
