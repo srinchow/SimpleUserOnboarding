@@ -1,6 +1,6 @@
 # SimpleUserOnboarding
 
-
+Backend API for the onboarding flow for an app and returns a score aggregating the answers
 
 
 ## Endpoint 
